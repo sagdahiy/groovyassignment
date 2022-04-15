@@ -1,0 +1,218 @@
+Write a method called isPrime that takes an integer argument and returns a Boolean. Determine whether the number is prime by dividing it by all numbers from 2 up to one less than the number.
+
+def boolean isPrime(int n)
+{
+	
+	if (n <= 1)
+		return false;
+
+
+	for (int i = 2; i < n; i++)
+		if (n % i == 0)
+			return false;
+
+	return true;
+}
+println isPrime(13)
+
+---------------------------------------------------------------------------------------------------------------------
+a)How many characters are in the string "Hello, Groovy!"?
+
+package first
+
+def a = "Hello, Groovy!"
+b = a.length()
+println b
+
+--------------------------------------------------------------------------------------------------
+Define a string variable containing a name. Print a hello statement with your name using string concatenation, then using a Groovy string
+
+
+package first
+
+String a= "Sagar"
+b = "hello ".concat(a)
+println b
+
+String c = "Sagar"
+d = "hello " + c 
+println d
+
+
+-----------------------------------------------------------------------------------------------------------
+
+Demonstrate that "racecar" is a palindrome by comparing it to its reverse. Do the same with "Bob", removing case sensitivity first.
+
+package first
+
+def w = "racecar"
+def b = "Bob"
+println "sd"
+
+def check(String word) {
+
+
+String reverse= ""
+//get the size of the word to be checked
+	  int length = word.size();
+// now reverse the word
+	  for ( int i = length- 1; i >= 0; i--){
+		 reverse = reverse + word.charAt(i);
+	  }
+// and now we check if the original word is equal with the reversed word
+	 if(word.equalsIgnoreCase(reverse)){
+		println "The String  " +word+ " is a palindrome " 
+	 }else{
+		println = "The String "" +word+ " is not a palindrome"";
+	 }
+}
+
+check(w)
+check(b)
+
+
+-------------------------------------------------------------------------------------------------------------
+
+Define a string variable containing the sentence, "Hello, World. How are you?". Split the sentence into an array using the split method. Count the number of words. Do the same using the tokenize method.
+
+package first
+
+def w = " Hello, World. How are you?"
+a = w.split()
+println a
+c = a.length
+println c
+d = w.tokenize()
+println d
+e = d.countTokens()
+println e
+
+---------------------------------------------------------------------------------------------------------------------
+Using the same sentence, use array notation (square brackets) to print the substring "World".
+ Use array notation to print the last word, but reversed
+
+def w = " Hello, World. How are you?"
+
+println w.substring(8,13)
+
+
+def w = [ "Hello ","World",". ", "How " ,"are ", "you?"]
+
+println w[1]
+String c = w[-1]
+println c.reverse()
+
+----------------------------------------------------------------------------------------------
+
+Create a list of strings. Sort them alphabetically. Sort them by length. Sort them by length in descending order.Advanced: Sort by length, then sort equal length strings alphabetically.
+
+def w = ["aman","mohan","rohan","sagar","bob","discovery","zebra"]
+
+println w.sort()
+//by length
+d = w.sort { a, b -> a.length() <=> b.length() ?: a <=> b}
+println d
+
+---------------------------------------------------------------------------------------------------
+
+
+Create a list of numbers. Add them together. First double each number, then add them up. Compute their average.
+
+
+def w = [1,3,5,2]
+
+println w.sum()
+
+ x = w.collect{it*3}
+
+ 
+println x
+println x.average()
+
+
+--------------------------------------------------------------------------------------------------------
+
+Create a class called Course, with a String attribute called name and an int attribute called days. Create a list of four course instances, where at least two have the same number of days. Sort the list by number of days.
+ class Course{
+	String name 
+	int days
+	
+	static void main(String[] args) {
+		Course a = new Course()
+		 a.name = "one"
+		 a.days= 30
+	
+		 Course b = new Course()
+		 b.name = "two"
+		 b.days= 20
+		Course c = new Course()
+		 c.name = "three"
+		 c.days= 15
+		Course d = new Course()
+		 d.name = "four"
+		 d.days= 15
+	         li = [a.days,b.days,c.days,d.days]
+                 mo = li.sort
+                 println mo
+	
+	
+	}
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+overloading : Create a class called Money with a double amount and a String currency (like USD or EUR). Implement a plus method that checks that the currencies are the same and, if so, returns a new Money instance with the sum of the amounts and the correct currency. Write a similar minus method.Write a MoneyTest class in Groovy that uses + and -and verifies that they work properly.
+
+
+
+
+
+class Money {
+    
+    String currency
+    double amount
+    
+
+    Money(String currency, double amount) {
+        this.currency = currency
+        this.amount = amount
+    }
+
+    def plus(Money other) {
+        if(this.currency == other.currency){
+            
+        
+        return new Money(this.currency , this.amount + other.amount )
+        }
+        else{
+        return new Money( " currency not matched", this.amount + other.amount)
+        }
+        }
+    def minus(Money other) {
+        if(this.currency == other.currency){
+            
+        
+        return new Money(this.currency , this.amount - other.amount )
+        }
+        else{
+        return new Money( " currency not matched", this.amount - other.amount)
+        }
+        }    
+
+    @Override
+    public String toString() {
+        return "Money{" +
+                "currency='" + currency + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
+}
+
+def money1 = new Money("USD", 500)
+def money2 = new Money("USD", 350)
+def money3 = money1 + money2
+def money4 = money1 - money2
+println money3
+println money4
